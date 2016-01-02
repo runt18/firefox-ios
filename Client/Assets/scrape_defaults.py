@@ -7,7 +7,7 @@ def main():
     locales = os.listdir("SearchPlugins")
     for locale in locales:
         default = getDefault(locale)
-        if default != None:
+        if default is not None:
             saveDefault(locale, default)
 
 def getDefault(locale):
