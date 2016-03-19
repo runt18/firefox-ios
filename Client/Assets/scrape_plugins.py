@@ -13,7 +13,7 @@ def main():
     locales = getLocaleList()
     for locale in locales:
         files = getFileList(locale)
-        if files == None:
+        if files is None:
             continue
 
         print("found searchplugins")
