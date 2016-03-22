@@ -30,8 +30,8 @@ def getLocaleList():
     return response.text.strip().split("\n")
 
 def getFileList(locale):
-    print("scraping: %s..." % locale)
-    url = "https://hg.mozilla.org/releases/l10n/mozilla-aurora/%s/file/default/mobile/searchplugins" % locale
+    print("scraping: {0!s}...".format(locale))
+    url = "https://hg.mozilla.org/releases/l10n/mozilla-aurora/{0!s}/file/default/mobile/searchplugins".format(locale)
     response = requests.get(url)
     if not response.ok:
         return
@@ -40,8 +40,8 @@ def getFileList(locale):
     return tree.xpath('//a[@class="list"]/text()')
 
 def getFile(locale, file):
-    print("  downloading: %s..." % file)
-    url = "https://hg.mozilla.org/releases/l10n/mozilla-aurora/%s/raw-file/default/mobile/searchplugins/%s" % (locale, file)
+    print("  downloading: {0!s}...".format(file))
+    url = "https://hg.mozilla.org/releases/l10n/mozilla-aurora/{0!s}/raw-file/default/mobile/searchplugins/{1!s}".format(locale, file)
     result = urllib.urlretrieve(url)
     return result[0]
 

@@ -11,8 +11,8 @@ def main():
             saveDefault(locale, default)
 
 def getDefault(locale):
-    print("scraping: %s..." % locale)
-    url = "https://hg.mozilla.org/releases/l10n/mozilla-aurora/%s/raw-file/default/mobile/chrome/region.properties" % locale
+    print("scraping: {0!s}...".format(locale))
+    url = "https://hg.mozilla.org/releases/l10n/mozilla-aurora/{0!s}/raw-file/default/mobile/chrome/region.properties".format(locale)
     response = requests.get(url)
     if not response.ok:
         return
@@ -22,7 +22,7 @@ def getDefault(locale):
         values = line.strip().split("=")
         if len(values) == 2 and values[0].strip() == "browser.search.defaultenginename":
             default = values[1].strip()
-            print("  default:  %s" % default)
+            print("  default:  {0!s}".format(default))
             return default
 
 def saveDefault(locale, default):
